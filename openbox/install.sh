@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 # -*- coding: utf-8 -*-
 #
 #  install.sh
@@ -32,13 +31,13 @@ if [[ -z "${_ANT_USERNAME}" ]]; then
 fi
 
 # All necessary files are here
-_ANT_SRC_DIR='/usr/share/antergos-desktop-setups/enlightenment'
+_ANT_SRC_DIR='/usr/share/antergos-desktop-setups/openbox'
 
 # Copy config files to skel folder
 cp -R "${_ANT_SRC_DIR}/skel" /etc/skel
 
 if [[ -z "${_ANT_NO_OVERWRITE}" ]]; then
-    echo ">>> Antergos Enlightement configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
+    echo ">>> Antergos Openbox configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
 
     # Copy config files to root
     cp -R "${_ANT_SRC_DIR}/skel" /root
@@ -51,5 +50,9 @@ if [[ -z "${_ANT_NO_OVERWRITE}" ]]; then
         chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
     fi
 else
-    echo ">>> Antergos Enlightement configuration will be applied to new users only."
+    echo ">>> Antergos Openbox configuration will be applied to new users only."
 fi
+
+# Copy global files (/etc /usr)
+cp -R "${_ANT_SRC_DIR}/etc/." /etc
+cp -R "${_ANT_SRC_DIR}/usr/." /usr
