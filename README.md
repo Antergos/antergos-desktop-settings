@@ -1,2 +1,2 @@
-# Desktop Setups
-Antergos setup settings for several Desktop Environments
+# Antergos Desktop Setups
+Antergos setup files for several Desktop Environments
