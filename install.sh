@@ -26,13 +26,13 @@ _ANT_DESKTOP="${1}"
 _ANT_USERNAME="${2}"
 _ANT_OVERWRITE="${3}"
 
-if [[ -z "${_ANT_USERNAME}" ]]; then
+if [[ -z "${_ANT_DESKTOP}" ]] || [[ -z "${_ANT_USERNAME}" ]]; then
     echo "Usage: ./install.sh desktop username [no-overwrite]"
     exit 0
 fi
 
 # All necessary files are here
-_ANT_SRC_DIR='/usr/share/antergos/desktop/${_ANT_DESKTOP}'
+_ANT_SRC_DIR="/usr/share/antergos/desktop/${_ANT_DESKTOP}"
 
 # User's home destination folder (won't be used if no-overwrite is used)
 _ANT_DST_DIR="/home/${_ANT_USERNAME}"
@@ -41,7 +41,7 @@ _ANT_DST_DIR="/home/${_ANT_USERNAME}"
 cp -R "${_ANT_SRC_DIR}/skel" /etc/skel
 
 if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
-    echo ">>> Antergos ${_ANT_DESKTOP} configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
+    echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users, root, and the following user: ${_ANT_USERNAME}."
 
     # Copy config files to root
     cp -R "${_ANT_SRC_DIR}/skel" /root
@@ -53,7 +53,7 @@ if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
         chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
     fi
 else
-    echo ">>> Antergos ${_ANT_DESKTOP} configuration will be applied to new users only."
+    echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users only."
 fi
 
 # Copy global files (/etc)
