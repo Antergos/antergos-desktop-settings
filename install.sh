@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 # -*- coding: utf-8 -*-
 #
 #  install.sh
@@ -23,27 +22,30 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-_ANT_USERNAME="${1}"
-_ANT_NO_OVERWRITE="${2}"
+_ANT_DESKTOP="${1}"
+_ANT_USERNAME="${2}"
+_ANT_OVERWRITE="${3}"
 
 if [[ -z "${_ANT_USERNAME}" ]]; then
-    echo "Usage: ./install.sh username"
+    echo "Usage: ./install.sh desktop username [no-overwrite]"
     exit 0
 fi
 
 # All necessary files are here
-_ANT_SRC_DIR='/usr/share/antergos-desktop-setups/enlightenment'
+_ANT_SRC_DIR='/usr/share/antergos-desktop/${_ANT_DESKTOP}'
+
+# User's home destination folder (won't be used if no-overwrite is used)
+_ANT_DST_DIR="/home/${_ANT_USERNAME}"
 
 # Copy config files to skel folder
 cp -R "${_ANT_SRC_DIR}/skel" /etc/skel
 
-if [[ -z "${_ANT_NO_OVERWRITE}" ]]; then
-    echo ">>> Antergos Enlightement configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
+if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
+    echo ">>> Antergos ${ANT_DESKTOP} configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
 
     # Copy config files to root
     cp -R "${_ANT_SRC_DIR}/skel" /root
 
-    _ANT_DST_DIR="/home/${_ANT_USERNAME}"
     if [[ -n "${_ANT_DST_DIR}" ]] && [[ -d "${_ANT_DST_DIR}" ]]; then
         # Copy config files to current user
         cp -R "${_ANT_SRC_DIR}/skel" "${_ANT_DST_DIR}"
@@ -51,5 +53,23 @@ if [[ -z "${_ANT_NO_OVERWRITE}" ]]; then
         chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
     fi
 else
-    echo ">>> Antergos Enlightement configuration will be applied to new users only."
+    echo ">>> Antergos ${ANT_DESKTOP} configuration will be applied to new users only."
+fi
+
+# Copy global files (/etc)
+if [ -d "${_ANT_SRC_DIR}/etc" ]; then
+    cp -R "${_ANT_SRC_DIR}/etc/." /etc
+fi
+
+# Copy global files (/usr)
+if [ -d "${_ANT_SRC_DIR}/usr" ]; then
+    cp -R "${_ANT_SRC_DIR}/usr/." /usr
+fi
+
+# Desktop specific setup
+
+if [[ ${_ANT_DESKTOP} == "kde" ]] || [[ ${ANT_DESKTOP} == "plasma" ]]; then
+    # Setup logo for kinfocenter's about distro screen
+    cp "${_ANT_SRC_DIR}/antergos-logo.svg" /usr/share/about-distro
+    sed -i 's|archlinux|antergos|g' /etc/xdg/kcm-about-distrorc
 fi
