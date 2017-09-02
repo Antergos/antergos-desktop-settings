@@ -32,7 +32,7 @@ if [[ -z "${_ANT_USERNAME}" ]]; then
 fi
 
 # All necessary files are here
-_ANT_SRC_DIR='/usr/share/antergos-desktop/${_ANT_DESKTOP}'
+_ANT_SRC_DIR='/usr/share/antergos/desktop/${_ANT_DESKTOP}'
 
 # User's home destination folder (won't be used if no-overwrite is used)
 _ANT_DST_DIR="/home/${_ANT_USERNAME}"
