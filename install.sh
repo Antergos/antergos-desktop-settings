@@ -41,7 +41,7 @@ _ANT_DST_DIR="/home/${_ANT_USERNAME}"
 cp -R "${_ANT_SRC_DIR}/skel" /etc/skel
 
 if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
-    echo ">>> Antergos ${ANT_DESKTOP} configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
+    echo ">>> Antergos ${_ANT_DESKTOP} configuration will be applied to new users, root, and the following user: ${_ANT_USERNAME}."
 
     # Copy config files to root
     cp -R "${_ANT_SRC_DIR}/skel" /root
@@ -53,7 +53,7 @@ if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
         chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
     fi
 else
-    echo ">>> Antergos ${ANT_DESKTOP} configuration will be applied to new users only."
+    echo ">>> Antergos ${_ANT_DESKTOP} configuration will be applied to new users only."
 fi
 
 # Copy global files (/etc)
@@ -68,7 +68,7 @@ fi
 
 # Desktop specific setup
 
-if [[ ${_ANT_DESKTOP} == "kde" ]] || [[ ${ANT_DESKTOP} == "plasma" ]]; then
+if [[ ${_ANT_DESKTOP} == "kde" ]] || [[ ${_ANT_DESKTOP} == "plasma" ]]; then
     # Setup logo for kinfocenter's about distro screen
     cp "${_ANT_SRC_DIR}/antergos-logo.svg" /usr/share/about-distro
     sed -i 's|archlinux|antergos|g' /etc/xdg/kcm-about-distrorc
