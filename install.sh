@@ -66,6 +66,14 @@ if [ -d "${_ANT_SRC_DIR}/usr" ]; then
     cp -R "${_ANT_SRC_DIR}/usr/." /usr
 fi
 
+# Copy schemas (from antergos-gsettings)
+_SCHEMAS_DST_DIR="/usr/share/glib-2.0/schemas"
+_SCHEMAS_SRC_DIR="/usr/share/antergos/schemas/${_ANT_DESKTOP}"
+
+if [ -d "${_SCHEMAS_SRC_DIR}" ] && [ -d "${_SCHEMAS_DST_DIR}" ]; then
+    cp "${_SCHEMAS_SRC_DIR}/*.override" ${_SCHEMAS_DST_DIR}
+fi
+
 # Desktop specific setup
 
 if [[ ${_ANT_DESKTOP} == "kde" ]] || [[ ${_ANT_DESKTOP} == "plasma" ]]; then
