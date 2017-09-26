@@ -38,22 +38,24 @@ _ANT_SRC_DIR="/usr/share/antergos/desktop/${_ANT_DESKTOP}"
 _ANT_DST_DIR="/home/${_ANT_USERNAME}"
 
 # Copy config files to skel folder
-cp -R "${_ANT_SRC_DIR}/skel/." /etc/skel
+if [ -d "${_ANT_SRC_DIR}/skel" ]; then
+    cp -R "${_ANT_SRC_DIR}/skel/." /etc/skel
 
-if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
-    echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users, root, and the following user: ${_ANT_USERNAME}."
+    if [[ "${_ANT_OVERWRITE}" != "no-overwrite" ]]; then
+        echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users, root, and the following user: ${_ANT_USERNAME}."
 
-    # Copy config files to root
-    cp -R "${_ANT_SRC_DIR}/skel/." /root
+        # Copy config files to root
+        cp -R "${_ANT_SRC_DIR}/skel/." /root
 
-    if [[ -n "${_ANT_DST_DIR}" ]] && [[ -d "${_ANT_DST_DIR}" ]]; then
-        # Copy config files to current user
-        cp -R "${_ANT_SRC_DIR}/skel/." "${_ANT_DST_DIR}"
-        # Fix permissions
-        chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
+        if [[ -n "${_ANT_DST_DIR}" ]] && [[ -d "${_ANT_DST_DIR}" ]]; then
+            # Copy config files to current user
+            cp -R "${_ANT_SRC_DIR}/skel/." "${_ANT_DST_DIR}"
+            # Fix permissions
+            chown -R "${_ANT_USERNAME}:users" "${_ANT_DST_DIR}"
+        fi
+    else
+        echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users only."
     fi
-else
-    echo ">>> Antergos ${_ANT_DESKTOP} configuration has been applied to new users only."
 fi
 
 # Copy global files (/etc)
@@ -71,7 +73,7 @@ _SCHEMAS_DST_DIR="/usr/share/glib-2.0/schemas"
 _SCHEMAS_SRC_DIR="/usr/share/antergos/schemas/${_ANT_DESKTOP}"
 
 if [ -d "${_SCHEMAS_SRC_DIR}" ] && [ -d "${_SCHEMAS_DST_DIR}" ]; then
-    cp "${_SCHEMAS_SRC_DIR}/*.override" ${_SCHEMAS_DST_DIR}
+    cp "${_SCHEMAS_SRC_DIR}/*" ${_SCHEMAS_DST_DIR}
 fi
 
 # Desktop specific setup
