@@ -11,6 +11,7 @@ list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']
 
 [org.gnome.desktop.background]
 picture-uri='file:///usr/share/antergos/wallpapers/antergos-wallpaper.png'
+show-desktop-icons=true
 
 [org.gnome.desktop.interface]
 clock-format='24h'
@@ -44,6 +45,9 @@ name='Numix-Frost'
 
 [org.gnome.nautilus.preferences]
 show-create-link=true
+
+[org.gnome.nautilus.icon-view]
+default-zoom-level='standard'
 
 [org.gnome.shell]
 enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-menu-buttons@dev.antergos.com', 'dash-to-dock@micxgx.gmail.com']
