@@ -108,7 +108,6 @@ Name=Breeze Dark
 XftAntialias=true
 XftHintStyle=hintmedium
 XftSubPixel=none
-dbfile=/home/karasu/.mozilla/firefox/kgkjqp1k.default/places.sqlite
 shadeSortColumn=true
 widgetStyle=Breeze
 
