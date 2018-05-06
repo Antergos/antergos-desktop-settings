@@ -1,9 +1,27 @@
+favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop,pamac-manager.desktop
+recent=xfce-settings-manager.desktop,xfce4-settings-editor.desktop,xfce-ui-settings.desktop,exo-terminal-emulator.desktop,gufw.desktop
+button-title=Applications
 button-icon=/usr/share/icons/xfce4-whiskermenu.svg
+button-single-row=false
+show-button-title=false
+show-button-icon=true
 launcher-show-name=true
 launcher-show-description=true
-favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop,pamac-manager.desktop
-menu-width=400
-menu-height=519
+launcher-show-tooltip=true
+item-icon-size=2
+hover-switch-category=true
+category-show-name=true
+category-icon-size=1
+load-hierarchy=false
+recent-items-max=10
+favorites-in-recent=true
+display-recent-default=false
+position-search-alternate=false
+position-commands-alternate=false
+position-categories-alternate=false
+menu-width=497
+menu-height=552
+menu-opacity=100
 command-settings=xfce4-settings-manager
 show-command-settings=true
 command-lockscreen=xflock4
@@ -14,3 +32,37 @@ command-logout=xfce4-session-logout
 show-command-logout=true
 command-menueditor=menulibre
 show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=true
+search-actions=5
+
+[action0]
+name=Man Pages
+pattern=#
+command=exo-open --launch TerminalEmulator man %s
+regex=false
+
+[action1]
+name=Web Search
+pattern=?
+command=exo-open --launch WebBrowser https://duckduckgo.com/?q=%u
+regex=false
+
+[action2]
+name=Wikipedia
+pattern=!w
+command=exo-open --launch WebBrowser https://en.wikipedia.org/wiki/%u
+regex=false
+
+[action3]
+name=Run in Terminal
+pattern=!
+command=exo-open --launch TerminalEmulator %s
+regex=false
+
+[action4]
+name=Open URI
+pattern=^(file|http|https):\\/\\/(.*)$
+command=exo-open \\0
+regex=true
+

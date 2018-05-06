@@ -21,7 +21,7 @@
       <property name="length-adjust" type="bool" value="true"/>
       <property name="background-style" type="uint" value="0"/>
       <property name="size" type="uint" value="27"/>
-      <property name="mode" type="uint" value="0"/>
+      <property name="mode" type="uint" value="1"/>
       <property name="autohide-behavior" type="uint" value="0"/>
     </property>
   </property>
@@ -59,12 +59,15 @@
     </property>
     <property name="plugin-7" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-9" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
     <property name="plugin-8" type="string" value="whiskermenu"/>
-    <property name="plugin-5" type="string" value="clock"/>
+    <property name="plugin-5" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+    </property>
     <property name="plugin-1" type="string" value="showdesktop"/>
   </property>
   <property name="configver" type="int" value="2"/>
