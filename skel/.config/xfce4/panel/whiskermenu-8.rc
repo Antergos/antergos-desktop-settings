@@ -1,7 +1,7 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop,pamac-manager.desktop
 recent=xfce-settings-manager.desktop,xfce4-settings-editor.desktop,xfce-ui-settings.desktop,exo-terminal-emulator.desktop,gufw.desktop
 button-title=Applications
-button-icon=/usr/share/icons/xfce4-whiskermenu.svg
+button-icon=/usr/share/antergos/new-logo-square32.png
 button-single-row=false
 show-button-title=false
 show-button-icon=true
