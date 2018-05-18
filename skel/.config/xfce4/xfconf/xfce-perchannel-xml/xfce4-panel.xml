@@ -21,7 +21,7 @@
       <property name="length-adjust" type="bool" value="true"/>
       <property name="background-style" type="uint" value="0"/>
       <property name="size" type="uint" value="27"/>
-      <property name="mode" type="uint" value="1"/>
+      <property name="mode" type="uint" value="0"/>
       <property name="autohide-behavior" type="uint" value="0"/>
     </property>
   </property>
@@ -51,6 +51,7 @@
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
         <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="miniaplicació networkmanager"/>
         <value type="string" value="xnoise"/>
       </property>
     </property>
