@@ -173,8 +173,8 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 bar {
     status_command i3status
     font pango:monospace 9
-
-	colors {
+    tray_padding 0
+    colors {
         background $bg-color
         separator #757575
         #                  border             background         text
@@ -208,7 +208,7 @@ bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 
 bindsym XF86AudioPlay exec mocp --toggle-pause
 bindsym XF86AudioPause exec mocp --toggle-pause
-bindsym XF86AudioStop exec mocp --togle-pause
+bindsym XF86AudioStop exec mocp --stop
 bindsym XF86AudioNext exec mocp --next
 bindsym XF86AudioPrev exec mocp --previous
 
