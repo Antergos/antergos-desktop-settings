@@ -49,7 +49,7 @@ show-create-link=true
 default-zoom-level='standard'
 
 [org.gnome.shell]
-enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-menu-buttons@dev.antergos.com', 'dash-to-dock@micxgx.gmail.com']
+enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-menu-buttons@dev.antergos.com', 'dash-to-dock@micxgx.gmail.com', 'pamac-updates@manjaro.org']
 favorite-apps=['nautilus.desktop', 'gnome-terminal.desktop', 'chromium.desktop', 'gnome-music.desktop', 'pamac.desktop']
 always-show-log-out=true
 
